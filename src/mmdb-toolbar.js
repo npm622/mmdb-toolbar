@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-			.module('mmdbToolbar')
+			.module('mmdbToolbar', [])
 
 			.provider('mmdbToolbarConfig', function() {
 
