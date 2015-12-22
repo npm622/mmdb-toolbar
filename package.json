@@ -10,6 +10,7 @@
   "homepage": "https://github.com/npm622/mmdb-bootstrap#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.8.0",
     "gulp-bower": "0.0.11"
   }
 }
