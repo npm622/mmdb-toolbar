@@ -33,8 +33,8 @@
 	function MmdbToolbarCtrl(mmdbToolbar) {
 		var vm = this;
 
-		vm.brand = mmdbToolbarConfig.brand;
-		vm.views = mmdbToolbarConfig.views;
+		vm.brand = mmdbToolbar.brand;
+		vm.views = mmdbToolbar.views;
 	}
 
 }());
