@@ -1,42 +1,38 @@
 (function() {
 	'use strict';
 
-	angular
-			.module('mmdbToolbar', [])
+	angular.module( 'mmdb.toolbar', [] )
 
-			.provider('mmdbToolbarConfig', function() {
+	.provider( 'mmdbToolbar', function() {
 
-				this.setBrand = function(brand) {
-					this.brand = brand;
-				};
+		this.setBrand = function(brand) {
+			this.brand = brand;
+		};
 
-				this.setViews = function(views) {
-					this.views = views;
-				};
+		this.setViews = function(views) {
+			this.views = views;
+		};
 
-				this.$get = function() {
-					return this;
-				};
-			})
+		this.$get = function() {
+			return this;
+		};
+	} )
 
-			.directive(
-					'mmdbToolbar',
-					function() {
-						return {
-							restrict : 'E',
-							template : '<nav class="navbar"><a class="navbar-brand" href="#">{{mmdbToolbar.brand}}</a><ul class="nav navbar-nav navbar-right"><li ng-repeat="view in mmdbToolbar.views"><a ng-click="#">{{view}}</a></li></ul></nav>',
-							controller : 'MmdbToolbarCtrl',
-							controllerAs : 'mmdbToolbar',
-							bindToController : true
-						}
-					})
+	.directive( 'mmdbToolbar', function() {
+		return {
+			restrict : 'E',
+			template : '<nav class="navbar"><a class="navbar-brand" href="#">{{mmdbToolbar.brand}}</a><ul class="nav navbar-nav navbar-right"><li ng-repeat="view in mmdbToolbar.views"><a ng-click="#">{{view}}</a></li></ul></nav>',
+			controller : 'MmdbToolbarCtrl',
+			controllerAs : 'mmdbToolbar',
+			bindToController : true
+		}
+	} )
 
-			.controller('MmdbToolbarCtrl',
-					[ 'mmdbToolbarConfig', MmdbToolbarCtrl ]);
+	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', MmdbToolbarCtrl ] );
 
-	function MmdbToolbarCtrl(mmdbToolbarConfig) {
+	function MmdbToolbarCtrl(mmdbToolbar) {
 		var vm = this;
-		
+
 		vm.brand = mmdbToolbarConfig.brand;
 		vm.views = mmdbToolbarConfig.views;
 	}
