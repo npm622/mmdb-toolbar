@@ -21,7 +21,7 @@
 	.directive( 'mmdbToolbar', function() {
 		return {
 			restrict : 'E',
-			template : '<nav class="navbar"><a class="navbar-brand" href="#">{{mmdbToolbar.brand}}</a><ul class="nav navbar-nav navbar-right"><li ng-repeat="view in mmdbToolbar.views"><a ng-click="#">{{view}}</a></li></ul></nav>',
+			template : '<nav class="navbar"><a class="navbar-brand" href="#">{{mmdbToolbar.brand}}</a><ul class="nav navbar-nav navbar-right"><li ng-repeat="view in mmdbToolbar.views"><a ng-href="#">{{view}}</a></li></ul></nav>',
 			controller : 'MmdbToolbarCtrl',
 			controllerAs : 'mmdbToolbar',
 			bindToController : true
