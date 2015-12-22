@@ -1,0 +1,21 @@
+{
+  "name": "mmdb-toobar",
+  "description": "common toolbar directive",
+  "authors": [
+    "nick makes"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src",
+    "test",
+    "tests",
+    "package.json",
+    "bower.json",
+    "gulpfile.js",
+    "README.md"
+  ],
+  "dependencies": {
+  }
+}

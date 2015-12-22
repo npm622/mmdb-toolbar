@@ -1,0 +1,15 @@
+{
+  "name": "mmdb-bootstrap",
+  "version": "0.0.0",
+  "description": "common toolbar directive",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm622/mmdb-toolbar.git"
+  },
+  "author": "nick makes",
+  "homepage": "https://github.com/npm622/mmdb-bootstrap#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bower": "0.0.11"
+  }
+}
