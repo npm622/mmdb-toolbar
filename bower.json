@@ -4,10 +4,14 @@
   "authors": [
     "nick makes"
   ],
+  "main": [
+	"dist/js/mmdb-toolbar.js"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "src",
     "test",
     "tests",
     "package.json",

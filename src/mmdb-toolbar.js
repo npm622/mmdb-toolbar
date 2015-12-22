@@ -21,7 +21,7 @@
 	.directive( 'mmdbToolbar', function() {
 		return {
 			restrict : 'E',
-			template : 'mmdb-toolbar.tmpl.html',
+			templateUrl : 'mmdb-toolbar.tmpl.html',
 			controller : 'MmdbToolbarCtrl',
 			controllerAs : 'mmdbToolbar',
 			bindToController : true
@@ -36,17 +36,6 @@
 		vm.brand = mmdbToolbar.brand;
 		vm.views = mmdbToolbar.views;
 	}
-
-	angular
-			.module( "mmdb.toolbar" )
-			.run(
-					[
-							"$templateCache",
-							function($templateCache) {
-								$templateCache
-										.put(
-												"mmdb-toolbar.tmpl.html",
-												"<nav class=\"navbar navbar-fixed-top\">\n  <a class=\"navbar-brand\" href=\"#\">{{mmdbToolbar.brand}}</a>\n        <ul class=\"nav navbar-nav navbar-right\">\n            <li ng-repeat=\"view in mmdbToolbar.views\"><a ng-href=\"#\">{{view}}</a></li>\n        </ul>\n</nav>" );
-							} ] );
-
+	
+	@@templateCache
 }());

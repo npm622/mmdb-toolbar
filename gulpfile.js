@@ -1,26 +1,39 @@
-var gulp = require( 'gulp' ), bower = require( 'gulp-bower' ), angularTemplateCache = require( 'gulp-angular-templatecache' );
+var gulp = require( 'gulp' ), angularTemplateCache = require( 'gulp-angular-templatecache' ), bower = require( 'gulp-bower' ), clean = require( 'gulp-clean' ), replaceTask = require( 'gulp-replace-task' ), fs = require( 'fs' ), pkg = require( './package.json' );
 
-var clientApp = './src/';
 var config = {
 	bowerDir : './bower_components',
-	htmltemplates : clientApp + '**/*.html',
+	directiveJs : pkg.name + '.js',
+	htmltemplates : './src/**/*.tmpl.html',
 	templateCache : {
-		file : 'templates.js',
+		tmpDir : './tmp/',
+		file : 'tmpls.tmp',
 		options : {
 			module : 'mmdb.toolbar',
 			root : '',
 			standAlone : false
 		}
-	},
-	temp : './.tmp/'
+	}
 };
 
 gulp.task( 'bower', function() {
 	return bower().pipe( gulp.dest( config.bowerDir ) )
 } );
 
-gulp.task( 'templateCache', function() {
-	return gulp.src( config.htmltemplates ).pipe( angularTemplateCache( config.templateCache.file, config.templateCache.options ) ).pipe( gulp.dest( config.temp ) );
+gulp.task( 'createTemplateCache', [ 'bower' ], function() {
+	return gulp.src( config.htmltemplates ).pipe( angularTemplateCache( config.templateCache.file, config.templateCache.options ) ).pipe( gulp.dest( config.templateCache.tmpDir ) );
 } );
 
-gulp.task( 'default', [ 'bower', 'templateCache' ] );
+gulp.task( 'injectTemplateCache', [ 'createTemplateCache' ], function() {
+	gulp.src( './src/' + config.directiveJs ).pipe( replaceTask( {
+		patterns : [ {
+			match : 'templateCache',
+			replacement : fs.readFileSync( config.templateCache.tmpDir + config.templateCache.file, 'utf8' )
+		} ]
+	} ) ).pipe( gulp.dest( './dist/js/' ) );
+} );
+
+gulp.task( 'clean', [ 'injectTemplateCache' ], function() {
+	gulp.src( config.templateCache.tmpDir ).pipe( clean() );
+} );
+
+gulp.task( 'default', [ 'bower', 'createTemplateCache', 'injectTemplateCache', 'clean' ] );
