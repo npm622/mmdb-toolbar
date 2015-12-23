@@ -1,20 +1,27 @@
-{
-  "name": "mmdb-toolbar",
-  "version": "0.0.0",
-  "description": "common toolbar directive",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/npm622/mmdb-toolbar.git"
-  },
-  "author": "nick makes",
-  "homepage": "https://github.com/npm622/mmdb-toolbar#readme",
-  "devDependencies": {
-    "fs": "0.0.2",
-    "gulp": "^3.9.0",
-    "gulp-angular-templatecache": "^1.8.0",
-    "gulp-bower": "0.0.11",
-    "gulp-clean": "^0.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-replace-task": "^0.11.0"
-  }
+{  
+   "name":"mmdb-toolbar",
+   "version":"0.0.0",
+   "description":"angular toolbar directive that allows a brand and list of views",
+   "keywords":[  
+
+   ],
+   "homepage":"https://github.com/npm622/mmdb-toolbar#readme",
+   "bugs":{  
+      "url":"https://github.com/npm622/mmdb-toolbar/issues"
+   },
+   "license":"MIT",
+   "author":"nick makes",
+   "repository":{  
+      "type":"git",
+      "url":"git+https://github.com/npm622/mmdb-toolbar.git"
+   },
+   "devDependencies":{  
+      "fs":"0.0.2",
+      "gulp":"^3.9.0",
+      "gulp-angular-templatecache":"^1.8.0",
+      "gulp-bower":"0.0.11",
+      "gulp-clean":"^0.3.1",
+      "gulp-concat":"^2.6.0",
+      "gulp-replace-task":"^0.11.0"
+   }
 }

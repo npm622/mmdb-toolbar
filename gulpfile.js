@@ -1,4 +1,10 @@
-var gulp = require( 'gulp' ), angularTemplateCache = require( 'gulp-angular-templatecache' ), bower = require( 'gulp-bower' ), clean = require( 'gulp-clean' ), replaceTask = require( 'gulp-replace-task' ), fs = require( 'fs' ), pkg = require( './package.json' );
+var gulp = require( 'gulp' );
+var angularTemplateCache = require( 'gulp-angular-templatecache' );
+var bower = require( 'gulp-bower' );
+var clean = require( 'gulp-clean' );
+var replaceTask = require( 'gulp-replace-task' );
+var fs = require( 'fs' );
+var pkg = require( './package.json' );
 
 var config = {
 	bowerDir : './bower_components',
