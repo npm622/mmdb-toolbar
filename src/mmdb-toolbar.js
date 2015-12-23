@@ -3,18 +3,6 @@
 
 	angular.module( 'mmdb.toolbar', ['ui.router'] )
 
-	.config( function config($stateProvider) {
-		$stateProvider.state( 'tito', {
-			url : '/tito',
-			templateUrl : 'tito.tmpl.html',
-			controller : 'TitoCtrl',
-			controllerAs : 'tito',
-			data : {
-				pageTitle : 'tito'
-			}
-		} );
-	} )
-
 	.provider( 'mmdbToolbar', function() {
 
 		this.setBrand = function(brand) {
@@ -28,6 +16,26 @@
 		this.$get = function() {
 			return this;
 		};
+	} )
+
+	.config( function config($stateProvider) {
+		$stateProvider.state( 'tito', {
+			url : '/tito',
+			templateUrl : 'tito.tmpl.html',
+			controller : 'TitoCtrl',
+			controllerAs : 'tito',
+			data : {
+				pageTitle : 'tito'
+			}
+		} ).state( 'yogi', {
+			url : '/yogi',
+			templateUrl : 'yogi.tmpl.html',
+			controller : 'YogiCtrl',
+			controllerAs : 'yogi',
+			data : {
+				pageTitle : 'yogi'
+			}
+		} );
 	} )
 
 	.directive( 'mmdbToolbar', function() {
@@ -45,17 +53,22 @@
 
 	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', MmdbToolbarCtrl ] )
 
-	.controller( 'TitoCtrl', [ '$scope', TitoCtrl ] );
+	.controller( 'TitoCtrl', [ '$scope', TitoCtrl ] )
+
+	.controller( 'YogiCtrl', [ '$scope', YogiCtrl ] );
 
 	function MmdbToolbarCtrl(mmdbToolbar) {
 		var vm = this;
 
 		vm.brand = mmdbToolbar.brand;
-		vm.views = mmdbToolbar.views;
 	}
 
 	function TitoCtrl($scope) {
-		console.log( 'hello tito!' );
+		var vm = this;
+	};
+
+	function YogiCtrl($scope) {
+		var vm = this;
 	};
 	
 	@@templateCache
