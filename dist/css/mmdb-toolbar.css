@@ -1,52 +1,27 @@
-blockquote {
-	padding: 6px 16px;
-	border: none;
-	quotes: "\201C" "\201D";
-	display: inline-block;
-	position: relative;
-}
-
-blockquote:before {
-	content: open-quote;
-	font-weight: bold;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-blockquote:after {
-	content: close-quote;
-	font-weight: bold;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
 .quote-box {
-	overflow: hidden;
-	margin-top: -50px;
-	padding-top: -100px;
-	border-radius: 17px;
-	background-color: #4ADFCC;
-	margin-top: 25px;
-	color: white;
-	width: 325px;
-	box-shadow: 2px 2px 2px 2px #E0E0E0;
+	margin: 72px auto;
+    padding: 32px 16px;
+    position: center;
+    width: 50%;
+    border-radius: 16px;
+    border-left: 4px solid;
+    border-right: 4px solid;
 }
 
 .quote-text {
-	font-size: 19px;
-	margin-top: -65px;
+    font-size: 2em;
+    letter-spacing: .15em;
+    font-family: CenturyGothic;
+    text-align: center;
 }
 
 .banner-title {
 	color: #272b30;
 	background-color: #c8c8c8;
+	font-size: 72px;
 	letter-spacing: .15em;
-	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
-		"AppleGothic", sans-serif;
-	font-size: 46px;
-	padding: 40px 25px;
+	font-family: CenturyGothic;
+	padding: 36px 18px;
 	text-align: center;
 	text-rendering: optimizeLegibility;
 }
