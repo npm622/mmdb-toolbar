@@ -68,7 +68,7 @@
 	function TitoCtrl($scope) {
 		var vm = this;
 		
-		vm.imgSrc = 'assets/images/copy-of-tito.jpg';
+		vm.imgSrc = 'assets/images/tito.jpg';
 	}
 
 	function Yogi() {
