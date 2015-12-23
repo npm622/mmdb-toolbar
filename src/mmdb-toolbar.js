@@ -5,12 +5,8 @@
 
 	.provider( 'mmdbToolbar', function() {
 
-		this.setBrand = function(brand) {
-			this.brand = brand;
-		};
-
-		this.setViews = function(views) {
-			this.views = views;
+		this.setBrandImg = function(brandImg) {
+			this.brandImg = brandImg;
 		};
 
 		this.$get = function() {
@@ -23,7 +19,7 @@
 			restrict : 'E',
 			templateUrl : 'mmdb-toolbar.tmpl.html',
 			scope : {
-				homeHref : "@"
+				brandText: '@'
 			},
 			controller : 'MmdbToolbarCtrl',
 			controllerAs : 'mmdbToolbar',
