@@ -7,11 +7,11 @@ var fs = require( 'fs' );
 var pkg = require( './package.json' );
 
 var config = {
-	bowerDir : './bower_components',
+	bowerDir : 'bower_components',
 	directiveJs : pkg.name + '.js',
-	htmltemplates : './src/**/*.tmpl.html',
+	htmltemplates : 'src/**/*.tmpl.html',
 	templateCache : {
-		tmpDir : './tmp/',
+		tmpDir : 'tmp/',
 		file : 'tmpls.tmp',
 		options : {
 			module : 'mmdb.toolbar',
@@ -30,16 +30,20 @@ gulp.task( 'createTemplateCache', [ 'bower' ], function() {
 } );
 
 gulp.task( 'injectTemplateCache', [ 'createTemplateCache' ], function() {
-	gulp.src( './src/' + config.directiveJs ).pipe( replaceTask( {
+	gulp.src( 'src/' + config.directiveJs ).pipe( replaceTask( {
 		patterns : [ {
 			match : 'templateCache',
 			replacement : fs.readFileSync( config.templateCache.tmpDir + config.templateCache.file, 'utf8' )
 		} ]
-	} ) ).pipe( gulp.dest( './dist/js/' ) );
+	} ) ).pipe( gulp.dest( 'dist/js/' ) );
 } );
 
 gulp.task( 'clean', [ 'injectTemplateCache' ], function() {
 	gulp.src( config.templateCache.tmpDir ).pipe( clean() );
 } );
 
-gulp.task( 'default', [ 'bower', 'createTemplateCache', 'injectTemplateCache', 'clean' ] );
+gulp.task( 'css', [ 'bower' ], function() {
+	gulp.src( 'src/mmdb-toolbar.css' ).pipe( gulp.dest( 'dist/css/' ) );
+} );
+
+gulp.task( 'default', [ 'bower', 'css', 'createTemplateCache', 'injectTemplateCache', 'clean' ] );
