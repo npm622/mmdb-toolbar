@@ -1,5 +1,20 @@
+body {
+    padding-top: 50px;
+}
+
+.banner-title {
+    color: #272b30;
+    background-color: #c8c8c8;
+    font-size: 72px;
+    letter-spacing: .15em;
+    font-family: CenturyGothic;
+    padding: 36px 18px;
+    text-align: center;
+    text-rendering: optimizeLegibility;
+}
+
 .quote-box {
-	margin: 72px auto;
+    margin: 72px auto;
     padding: 32px 16px;
     position: center;
     width: 50%;
@@ -13,15 +28,4 @@
     letter-spacing: .15em;
     font-family: CenturyGothic;
     text-align: center;
-}
-
-.banner-title {
-	color: #272b30;
-	background-color: #c8c8c8;
-	font-size: 72px;
-	letter-spacing: .15em;
-	font-family: CenturyGothic;
-	padding: 36px 18px;
-	text-align: center;
-	text-rendering: optimizeLegibility;
 }

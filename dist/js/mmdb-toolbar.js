@@ -139,7 +139,7 @@
 		vm.quote = Yogi.pick();
 	}
 
-	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"navbar navbar-fixed-top\">\n	<a class=\"navbar-brand\" ng-href=\"#/\">{{mmdbToolbar.brand}}</a>\n	<ul class=\"nav navbar-nav navbar-right\">\n		<li><a ng-href=\"#/tito\">tito</a></li>\n		<li><a ng-href=\"#/yogi\">yogi</a></li>\n	</ul>\n</nav>");
-$templateCache.put("tito.tmpl.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-rounded\"/>\n</div>\n");
-$templateCache.put("yogi.tmpl.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{yogi.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);
+	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container\">\n        <div class=\"navbar-header\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{mmdbToolbar.brand}}\" src=\"\"></a>\n        </div>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-href=\"#/tito\">tito</a></li>\n            <li><a ng-href=\"#/yogi\">yogi</a></li>\n        </ul>\n    </div>\n</nav>");
+$templateCache.put("tito.tmpl.html","<div class=\"container\">\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-rounded\"/>\n</div>\n");
+$templateCache.put("yogi.tmpl.html","<div class=\"container\">\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{yogi.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);
 }());
