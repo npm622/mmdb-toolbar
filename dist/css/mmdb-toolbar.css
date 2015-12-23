@@ -21,3 +21,32 @@ blockquote:after {
 	bottom: 0;
 	right: 0;
 }
+
+.quote-box {
+	overflow: hidden;
+	margin-top: -50px;
+	padding-top: -100px;
+	border-radius: 17px;
+	background-color: #4ADFCC;
+	margin-top: 25px;
+	color: white;
+	width: 325px;
+	box-shadow: 2px 2px 2px 2px #E0E0E0;
+}
+
+.quote-text {
+	font-size: 19px;
+	margin-top: -65px;
+}
+
+.banner-title {
+	color: #272b30;
+	background-color: #c8c8c8;
+	letter-spacing: .15em;
+	font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic,
+		"AppleGothic", sans-serif;
+	font-size: 46px;
+	padding: 40px 25px;
+	text-align: center;
+	text-rendering: optimizeLegibility;
+}
