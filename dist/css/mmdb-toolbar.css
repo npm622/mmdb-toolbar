@@ -2,10 +2,8 @@ body {
     padding-top: 50px;
 }
 
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
+.tito {
+	padding-top: 32px 16px;
 }
 
 .banner-title {
@@ -14,7 +12,7 @@ body {
     font-size: 72px;
     letter-spacing: .15em;
     font-family: CenturyGothic;
-    padding: 36px 18px;
+    padding: 36px 0px;
     text-align: center;
     text-rendering: optimizeLegibility;
 }
