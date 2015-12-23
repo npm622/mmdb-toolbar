@@ -140,6 +140,6 @@
 	}
 
 	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"navbar navbar-fixed-top\">\n	<a class=\"navbar-brand\" ng-href=\"#/\">{{mmdbToolbar.brand}}</a>\n	<ul class=\"nav navbar-nav navbar-right\">\n		<li><a ng-href=\"#/tito\">tito</a></li>\n		<li><a ng-href=\"#/yogi\">yogi</a></li>\n	</ul>\n</nav>");
-$templateCache.put("tito.tmpl.html","<div>\n    <h3>meet tito!</h3>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"img-rounded\"/>\n</div>\n");
+$templateCache.put("tito.tmpl.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-rounded\"/>\n</div>\n");
 $templateCache.put("yogi.tmpl.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{yogi.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);
 }());
