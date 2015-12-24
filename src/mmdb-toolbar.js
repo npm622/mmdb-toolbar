@@ -23,7 +23,8 @@
 			},
 			controller : 'MmdbToolbarCtrl',
 			controllerAs : 'mmdbToolbar',
-			bindToController : true
+			bindToController : true,
+			transclude: true
 		}
 	} )
 
@@ -44,6 +45,14 @@
 			data : {
 				pageTitle : 'yogi'
 			}
+		} ).state( 'sandbox', {
+			url : '/sandbox',
+			templateUrl : 'sandbox.tmpl.html',
+			controller : 'SandboxCtrl',
+			controllerAs : 'sandbox',
+			data : {
+				pageTitle : 'sandbox'
+			}
 		} );
 	} )
 
@@ -53,7 +62,9 @@
 
 	.factory( 'Yogi', [ Yogi ] )
 
-	.controller( 'YogiCtrl', [ '$scope', 'Yogi', YogiCtrl ] );
+	.controller( 'YogiCtrl', [ '$scope', 'Yogi', YogiCtrl ] )
+	
+	.controller( 'SandboxCtrl', [ '$scope', SandboxCtrl ] );
 
 	function MmdbToolbarCtrl(mmdbToolbar) {
 		var vm = this;
@@ -133,6 +144,11 @@
 		var vm = this;
 
 		vm.quote = Yogi.pick();
+	}
+
+	function SandboxCtrl($scope) {
+		var vm = this;
+		console.log("welcome to the sandbox controller");
 	}
 
 	@@templateCache

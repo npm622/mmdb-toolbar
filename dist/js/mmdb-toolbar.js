@@ -23,7 +23,8 @@
 			},
 			controller : 'MmdbToolbarCtrl',
 			controllerAs : 'mmdbToolbar',
-			bindToController : true
+			bindToController : true,
+			transclude: true
 		}
 	} )
 
@@ -44,6 +45,14 @@
 			data : {
 				pageTitle : 'yogi'
 			}
+		} ).state( 'sandbox', {
+			url : '/sandbox',
+			templateUrl : 'sandbox.tmpl.html',
+			controller : 'SandboxCtrl',
+			controllerAs : 'sandbox',
+			data : {
+				pageTitle : 'sandbox'
+			}
 		} );
 	} )
 
@@ -53,7 +62,9 @@
 
 	.factory( 'Yogi', [ Yogi ] )
 
-	.controller( 'YogiCtrl', [ '$scope', 'Yogi', YogiCtrl ] );
+	.controller( 'YogiCtrl', [ '$scope', 'Yogi', YogiCtrl ] )
+	
+	.controller( 'SandboxCtrl', [ '$scope', SandboxCtrl ] );
 
 	function MmdbToolbarCtrl(mmdbToolbar) {
 		var vm = this;
@@ -135,7 +146,13 @@
 		vm.quote = Yogi.pick();
 	}
 
-	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{mmdbToolbar.brandText}}\" src=\"{{mmdbToolbar.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li><a ng-href=\"#/dbAdmin\"></a>dbAdmin</li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-href=\"#/tito\">tito</a></li>\n            <li><a ng-href=\"#/yogi\">yogi</a></li>\n        </ul>\n    </div>\n</nav>");
-$templateCache.put("tito.tmpl.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-rounded tito\"/>\n</div>\n");
+	function SandboxCtrl($scope) {
+		var vm = this;
+		console.log("welcome to the sandbox controller");
+	}
+
+	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{mmdbToolbar.brandText}}\" src=\"{{mmdbToolbar.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\" ng-transclude>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-href=\"#/tito\">tito</a></li>\n            <li><a ng-href=\"#/yogi\">yogi</a></li>\n            <li><a ng-href=\"#/sandbox\">sandbox</a></li>\n        </ul>\n    </div>\n</nav>");
+$templateCache.put("sandbox.tmpl.html","feel free to play around here");
+$templateCache.put("tito.tmpl.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
 $templateCache.put("yogi.tmpl.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{yogi.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);
 }());
