@@ -56,7 +56,7 @@
 		} );
 	} )
 
-	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', MmdbToolbarCtrl ] )
+	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', '$location', MmdbToolbarCtrl ] )
 
 	.controller( 'TitoCtrl', [ '$scope', TitoCtrl ] )
 
@@ -66,10 +66,22 @@
 	
 	.controller( 'SandboxCtrl', [ '$scope', SandboxCtrl ] );
 
-	function MmdbToolbarCtrl(mmdbToolbar) {
+	function MmdbToolbarCtrl(mmdbToolbar, $location) {
 		var vm = this;
 
 		vm.brand = mmdbToolbar.brand;
+		
+		vm.onTitoClick = function() {
+			$location.path('/tito');
+		}
+		
+		vm.onYogiClick = function() {
+			$location.path('/yogi');
+		}
+		
+		vm.onSandboxClick = function() {
+			$location.path('/sandbox');
+		}
 	}
 
 	function TitoCtrl($scope) {
@@ -151,7 +163,7 @@
 		console.log("welcome to the sandbox controller");
 	}
 
-	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{mmdbToolbar.brandText}}\" src=\"{{mmdbToolbar.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\" ng-transclude>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-href=\"#/tito\">tito</a></li>\n            <li><a ng-href=\"#/yogi\">yogi</a></li>\n            <li><a ng-href=\"#/sandbox\">sandbox</a></li>\n        </ul>\n    </div>\n</nav>");
+	angular.module("mmdb.toolbar").run(["$templateCache", function($templateCache) {$templateCache.put("mmdb-toolbar.tmpl.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{mmdbToolbar.brandText}}\" src=\"{{mmdbToolbar.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\" ng-transclude>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-click=\"mmdbToolbar.onTitoClick()\">tito</a></li>\n            <li><a ng-click=\"mmdbToolbar.onYogiClick()\">yogi</a></li>\n            <li><a ng-click=\"mmdbToolbar.onSandboxClick()\">sandbox</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("sandbox.tmpl.html","feel free to play around here");
 $templateCache.put("tito.tmpl.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img ng-src=\"{{tito.imgSrc}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
 $templateCache.put("yogi.tmpl.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{yogi.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);

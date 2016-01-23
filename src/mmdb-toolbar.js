@@ -56,7 +56,7 @@
 		} );
 	} )
 
-	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', MmdbToolbarCtrl ] )
+	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', '$location', MmdbToolbarCtrl ] )
 
 	.controller( 'TitoCtrl', [ '$scope', TitoCtrl ] )
 
@@ -66,10 +66,22 @@
 	
 	.controller( 'SandboxCtrl', [ '$scope', SandboxCtrl ] );
 
-	function MmdbToolbarCtrl(mmdbToolbar) {
+	function MmdbToolbarCtrl(mmdbToolbar, $location) {
 		var vm = this;
 
 		vm.brand = mmdbToolbar.brand;
+		
+		vm.onTitoClick = function() {
+			$location.path('/tito');
+		}
+		
+		vm.onYogiClick = function() {
+			$location.path('/yogi');
+		}
+		
+		vm.onSandboxClick = function() {
+			$location.path('/sandbox');
+		}
 	}
 
 	function TitoCtrl($scope) {

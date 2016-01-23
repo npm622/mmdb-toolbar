@@ -9,6 +9,7 @@ var pkg = require( './package.json' );
 var config = {
 	bowerDir : 'bower_components',
 	directiveJs : pkg.name + '.js',
+	directiveCss : pkg.name + '.css',
 	htmltemplates : 'src/**/*.tmpl.html',
 	templateCache : {
 		tmpDir : 'tmp/',
@@ -43,7 +44,7 @@ gulp.task( 'clean', [ 'injectTemplateCache' ], function() {
 } );
 
 gulp.task( 'css', [ 'bower' ], function() {
-	gulp.src( 'src/mmdb-toolbar.css' ).pipe( gulp.dest( 'dist/css/' ) );
+	gulp.src( 'src/' + config.directiveCss ).pipe( gulp.dest( 'dist/css/' ) );
 } );
 
 gulp.task( 'default', [ 'bower', 'css', 'createTemplateCache', 'injectTemplateCache', 'clean' ] );
