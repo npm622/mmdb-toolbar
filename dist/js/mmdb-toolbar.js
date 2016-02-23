@@ -28,9 +28,7 @@
 		}
 	} )
 
-	.config( function config($locationProvider, $stateProvider) {
-		$locationProvider.html5Mode(true);
-
+	.config( function config($stateProvider) {
 		$stateProvider.state( 'tito', {
 			url : '/tito',
 			templateUrl : 'tito.tmpl.html',
