@@ -69,7 +69,7 @@
 	function MmdbToolbarCtrl(mmdbToolbar, $location) {
 		var vm = this;
 
-		vm.brand = mmdbToolbar.brand;
+		vm.brandImg = mmdbToolbar.brandImg;
 		
 		vm.onTitoClick = function() {
 			$location.path('/tito');
