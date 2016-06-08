@@ -62,7 +62,7 @@
 
 	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', '$location', MmdbToolbarCtrl ] )
 
-	.controller( 'TitoCtrl', [ 'mmdbToolbar', '$scope', , TitoCtrl ] )
+	.controller( 'TitoCtrl', [ 'mmdbToolbar', '$scope', TitoCtrl ] )
 
 	.factory( 'Yogi', [ Yogi ] )
 
