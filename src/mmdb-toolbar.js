@@ -91,15 +91,7 @@
 	function TitoCtrl(mmdbToolbar, $scope) {
 		var vm = this;
 
-		vm.titoImg = mmdbToolbar.titoImg;
-
-		if (!vm.titoImg || vm.titoImg === '' ) {
-			vm.imgSrc = 'assets/images/tito.jpg';
-		} else {
-			vm.imgSrc = vm.titoImg;
-		}
-		
-		
+		vm.titoImg = mmdbToolbar.titoImg;		
 	}
 
 	function Yogi() {
