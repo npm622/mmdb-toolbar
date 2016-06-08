@@ -4,6 +4,19 @@ body {
 
 .mmdb-brand {
     width: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.mmdb-brand img {
+    max-height: 100%;
+    max-width: 100%;
+    position: absolute;
+    margin: auto;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
 }
 
 .tito {
@@ -36,20 +49,4 @@ body {
     letter-spacing: .15em;
     font-family: CenturyGothic;
     text-align: center;
-}
-
-.center-image {
-    overflow: hidden;
-    position: relative;
-}
-
-.center-image img {
-    max-height: 100%;
-    max-width: 100%;
-    position: absolute;
-    margin: auto;
-    bottom: 0;
-    left: 0;
-    top: 0;
-    right: 0;
 }
