@@ -9,6 +9,10 @@
 			this.brandImg = brandImg;
 		};
 
+		this.setTitoImg = function(titoImg) {
+			this.titoImg = titoImg;
+		}
+
 		this.$get = function() {
 			return this;
 		};
@@ -58,7 +62,7 @@
 
 	.controller( 'MmdbToolbarCtrl', [ 'mmdbToolbar', '$location', MmdbToolbarCtrl ] )
 
-	.controller( 'TitoCtrl', [ '$scope', TitoCtrl ] )
+	.controller( 'TitoCtrl', [ 'mmdbToolbar', '$scope', , TitoCtrl ] )
 
 	.factory( 'Yogi', [ Yogi ] )
 
@@ -84,10 +88,18 @@
 		}
 	}
 
-	function TitoCtrl($scope) {
+	function TitoCtrl(mmdbToolbar, $scope) {
 		var vm = this;
+
+		vm.titoImg = mmdbToolbar.titoImg;
+
+		if (!vm.titoImg || vm.titoImg === '' ) {
+			vm.imgSrc = 'assets/images/tito.jpg';
+		} else {
+			vm.imgSrc = vm.titoImg;
+		}
 		
-		vm.imgSrc = 'assets/images/tito.jpg';
+		
 	}
 
 	function Yogi() {
