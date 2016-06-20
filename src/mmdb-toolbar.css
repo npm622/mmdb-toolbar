@@ -2,6 +2,10 @@ body {
     padding-top: 50px;
 }
 
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
+
 .mmdb-brand {
     width: 220px;
     overflow: hidden;
