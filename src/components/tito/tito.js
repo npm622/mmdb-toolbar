@@ -1,7 +1,7 @@
 ( function() {
     angular.module( 'mmdb.toolbar' )
 
-    .component( 'mmdbToolbar', {
+    .component( 'tito', {
         templateUrl : 'components/tito/tito.html',
         bindings : {},
         controller : [ 'mmdbToolbar', TitoCtrl ]

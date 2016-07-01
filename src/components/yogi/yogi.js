@@ -1,7 +1,7 @@
 ( function() {
     angular.module( 'mmdb.toolbar' )
 
-    .component( 'mmdbToolbar', {
+    .component( 'yogi', {
         templateUrl : 'components/yogi/yogi.html',
         bindings : {},
         controller : [ 'yogiQuotes', YogiCtrl ]

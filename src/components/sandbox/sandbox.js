@@ -1,7 +1,7 @@
 ( function() {
     angular.module( 'mmdb.toolbar' )
 
-    .component( 'mmdbToolbar', {
+    .component( 'sandbox', {
         templateUrl : 'components/sandbox/sandbox.html',
         bindings : {},
         controller : [ SandboxCtrl ]
