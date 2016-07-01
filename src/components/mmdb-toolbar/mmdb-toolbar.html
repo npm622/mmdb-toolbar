@@ -1,0 +1,14 @@
+<nav class="nav navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header mmdb-brand center-image">
+            <a class="nav navbar-brand" href="#/"> <img alt="{{$ctrl.brandText}}" src="{{$ctrl.brandImg}}"></a>
+        </div>
+        <ul class="nav nav-tabs navbar-left" ng-transclude>
+        </ul>
+        <ul class="nav nav-pills navbar-right">
+            <li><a ng-click="$ctrl.onTitoClick()">tito</a></li>
+            <li><a ng-click="$ctrl.onYogiClick()">yogi</a></li>
+            <li><a ng-click="$ctrl.onSandboxClick()">sandbox</a></li>
+        </ul>
+    </div>
+</nav>
