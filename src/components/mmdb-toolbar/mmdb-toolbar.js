@@ -15,15 +15,21 @@
         vm.brandImg = provider.brandImg;
 
         vm.onTitoClick = function() {
-            $location.path( '/tito' );
+            $location.path( provider.titoUrl );
         }
 
         vm.onYogiClick = function() {
-            $location.path( '/yogi' );
+            $location.path( provider.yogiUrl );
         }
 
         vm.onSandboxClick = function() {
-            $location.path( '/sandbox' );
+            $location.path( provider.sandboxUrl );
         }
+
+        vm.onStyleGuideClick = function() {
+            $location.path( provider.styleGuideUrl );
+        }
+
+        vm.leftPills = provider.leftPills;
     }
 } )();

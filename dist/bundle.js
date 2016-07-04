@@ -6,6 +6,15 @@
     .provider( 'mmdbToolbar', function() {
         var vm = this;
 
+        vm.pillConsts = {
+            TITO : 'tito',
+            YOGI : 'yogi',
+            SANDBOX : 'sandbox',
+            STYLE_GUIDE : 'style guide'
+        };
+
+        vm.rightPills = [ pillConsts.TITO, pillConsts.YOGI, pillConsts.SANDBOX, pillConsts.STYLE_GUIDE ];
+
         vm.$get = function() {
             return vm;
         };
@@ -17,26 +26,45 @@
         vm.setTitoImg = function( titoImg ) {
             vm.titoImg = titoImg;
         }
+
+        vm.setRightPills = function( pills ) {
+            vm.rightPills = pills;
+        }
+
+        vm.setLeftPills = function( pills ) {
+            vm.leftPills = pills;
+        }
     } )
 
-    .config( function config( $stateProvider ) {
+    .config( function config( $stateProvider, mmdbToolbarProivder ) {
+        var titoUrl = ( mmdbToolbarProivder.titoUrl ) ? mmdbToolbarProivder.titoUrl : '/tito';
+        var yogiUrl = ( mmdbToolbarProivder.yogiUrl ) ? mmdbToolbarProivder.yogiUrl : '/yogi';
+        var sandboxUrl = ( mmdbToolbarProivder.sandboxUrl ) ? mmdbToolbarProivder.sandboxUrl : '/sandbox';
+        var styleGuideUrl = ( mmdbToolbarProivder.styleGuideUrl ) ? mmdbToolbarProivder.styleGuideUrl : '/sandbox';
+
         $stateProvider.state( 'tito', {
-            url : '/tito',
+            url : titoUrl,
             template : '<tito></tito>',
             data : {
                 pageTitle : 'tito'
             }
         } ).state( 'yogi', {
-            url : '/yogi',
+            url : yogiUrl,
             template : '<yogi></yogi>',
             data : {
                 pageTitle : 'yogi'
             }
         } ).state( 'sandbox', {
-            url : '/sandbox',
+            url : sandboxUrl,
             template : '<sandbox></sandbox>',
             data : {
                 pageTitle : 'sandbox'
+            }
+        } ).state( 'styleGuide', {
+            url : styleGuideUrl,
+            template : '<style-guide></style-guide>',
+            date : {
+                pageTitle : 'style guide'
             }
         } );
     } );
@@ -59,16 +87,22 @@
         vm.brandImg = provider.brandImg;
 
         vm.onTitoClick = function() {
-            $location.path( '/tito' );
+            $location.path( provider.titoUrl );
         }
 
         vm.onYogiClick = function() {
-            $location.path( '/yogi' );
+            $location.path( provider.yogiUrl );
         }
 
         vm.onSandboxClick = function() {
-            $location.path( '/sandbox' );
+            $location.path( provider.sandboxUrl );
         }
+
+        vm.onStyleGuideClick = function() {
+            $location.path( provider.styleGuideUrl );
+        }
+
+        vm.leftPills = provider.leftPills;
     }
 } )();
 
@@ -84,6 +118,21 @@
     function SandboxCtrl() {
         var vm = this;
         console.log( "welcome to the sandbox controller" );
+    }
+} )();
+
+( function() {
+    angular.module( 'mmdb.toolbar' )
+
+    .component( 'styleGuide', {
+        templateUrl : 'components/style-guide/style-guide.html',
+        bindings : {},
+        controller : [ StyleGuideCtrl ]
+    } );
+
+    function StyleGuideCtrl() {
+        var vm = this;
+        console.log( "welcome to the style guide controller" );
     }
 } )();
 
@@ -189,7 +238,8 @@
     }
 } )();
 
-(function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{$ctrl.brandText}}\" src=\"{{$ctrl.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-click=\"$ctrl.onTitoClick()\">tito</a></li>\n            <li><a ng-click=\"$ctrl.onYogiClick()\">yogi</a></li>\n            <li><a ng-click=\"$ctrl.onSandboxClick()\">sandbox</a></li>\n        </ul>\n    </div>\n</nav>");
+(function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{$ctrl.brandText}}\" src=\"{{$ctrl.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"leftPill in $ctrl.leftPills\"><a href=\"#/{{leftPill}}\"></a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-click=\"$ctrl.onTitoClick()\">tito</a></li>\n            <li><a ng-click=\"$ctrl.onYogiClick()\">yogi</a></li>\n            <li><a ng-click=\"$ctrl.onSandboxClick()\">sandbox</a></li>\n            <li><a ng-click=\"$ctrl.onStyleGuideClick()\">style guide</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("components/sandbox/sandbox.html","feel free to play around here");
-$templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.titoImg}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
-$templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);})();
+$templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");
+$templateCache.put("components/style-guide/style-guide.html","TODO: style guide");
+$templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.titoImg}}\" class=\"center-block img-circle tito\"/>\n</div>\n");}]);})();
