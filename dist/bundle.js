@@ -13,7 +13,7 @@
             STYLE_GUIDE : 'style guide'
         };
 
-        vm.rightPills = [ pillConsts.TITO, pillConsts.YOGI, pillConsts.SANDBOX, pillConsts.STYLE_GUIDE ];
+        vm.rightPills = [ vm.pillConsts.TITO, vm.pillConsts.YOGI, vm.pillConsts.SANDBOX, vm.pillConsts.STYLE_GUIDE ];
 
         vm.$get = function() {
             return vm;
@@ -36,11 +36,11 @@
         }
     } )
 
-    .config( function config( $stateProvider, mmdbToolbarProivder ) {
-        var titoUrl = ( mmdbToolbarProivder.titoUrl ) ? mmdbToolbarProivder.titoUrl : '/tito';
-        var yogiUrl = ( mmdbToolbarProivder.yogiUrl ) ? mmdbToolbarProivder.yogiUrl : '/yogi';
-        var sandboxUrl = ( mmdbToolbarProivder.sandboxUrl ) ? mmdbToolbarProivder.sandboxUrl : '/sandbox';
-        var styleGuideUrl = ( mmdbToolbarProivder.styleGuideUrl ) ? mmdbToolbarProivder.styleGuideUrl : '/sandbox';
+    .config( function config( $stateProvider, mmdbToolbarProvider ) {
+        var titoUrl = ( mmdbToolbarProvider.titoUrl ) ? mmdbToolbarProvider.titoUrl : '/tito';
+        var yogiUrl = ( mmdbToolbarProvider.yogiUrl ) ? mmdbToolbarProvider.yogiUrl : '/yogi';
+        var sandboxUrl = ( mmdbToolbarProvider.sandboxUrl ) ? mmdbToolbarProvider.sandboxUrl : '/sandbox';
+        var styleGuideUrl = ( mmdbToolbarProvider.styleGuideUrl ) ? mmdbToolbarProvider.styleGuideUrl : '/sandbox';
 
         $stateProvider.state( 'tito', {
             url : titoUrl,
@@ -241,5 +241,5 @@
 (function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{$ctrl.brandText}}\" src=\"{{$ctrl.brandImg}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"leftPill in $ctrl.leftPills\"><a href=\"#/{{leftPill}}\"></a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li><a ng-click=\"$ctrl.onTitoClick()\">tito</a></li>\n            <li><a ng-click=\"$ctrl.onYogiClick()\">yogi</a></li>\n            <li><a ng-click=\"$ctrl.onSandboxClick()\">sandbox</a></li>\n            <li><a ng-click=\"$ctrl.onStyleGuideClick()\">style guide</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("components/sandbox/sandbox.html","feel free to play around here");
 $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");
-$templateCache.put("components/style-guide/style-guide.html","TODO: style guide");
-$templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.titoImg}}\" class=\"center-block img-circle tito\"/>\n</div>\n");}]);})();
+$templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.titoImg}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
+$templateCache.put("components/style-guide/style-guide.html","TODO: style guide");}]);})();

@@ -13,7 +13,7 @@
             STYLE_GUIDE : 'style guide'
         };
 
-        vm.rightPills = [ pillConsts.TITO, pillConsts.YOGI, pillConsts.SANDBOX, pillConsts.STYLE_GUIDE ];
+        vm.rightPills = [ vm.pillConsts.TITO, vm.pillConsts.YOGI, vm.pillConsts.SANDBOX, vm.pillConsts.STYLE_GUIDE ];
 
         vm.$get = function() {
             return vm;
@@ -36,11 +36,11 @@
         }
     } )
 
-    .config( function config( $stateProvider, mmdbToolbarProivder ) {
-        var titoUrl = ( mmdbToolbarProivder.titoUrl ) ? mmdbToolbarProivder.titoUrl : '/tito';
-        var yogiUrl = ( mmdbToolbarProivder.yogiUrl ) ? mmdbToolbarProivder.yogiUrl : '/yogi';
-        var sandboxUrl = ( mmdbToolbarProivder.sandboxUrl ) ? mmdbToolbarProivder.sandboxUrl : '/sandbox';
-        var styleGuideUrl = ( mmdbToolbarProivder.styleGuideUrl ) ? mmdbToolbarProivder.styleGuideUrl : '/sandbox';
+    .config( function config( $stateProvider, mmdbToolbarProvider ) {
+        var titoUrl = ( mmdbToolbarProvider.titoUrl ) ? mmdbToolbarProvider.titoUrl : '/tito';
+        var yogiUrl = ( mmdbToolbarProvider.yogiUrl ) ? mmdbToolbarProvider.yogiUrl : '/yogi';
+        var sandboxUrl = ( mmdbToolbarProvider.sandboxUrl ) ? mmdbToolbarProvider.sandboxUrl : '/sandbox';
+        var styleGuideUrl = ( mmdbToolbarProvider.styleGuideUrl ) ? mmdbToolbarProvider.styleGuideUrl : '/sandbox';
 
         $stateProvider.state( 'tito', {
             url : titoUrl,
