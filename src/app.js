@@ -12,35 +12,35 @@
                 state : 'home',
                 url : '#/',
                 template : '<home></home>',
-                include : true
+                exclude : false
             },
             tito : {
                 display : 'tito',
                 state : 'tito',
                 url : '#/tito',
                 template : '<tito></tito>',
-                include : true
+                exclude : false
             },
             yogi : {
                 display : 'yogi',
                 state : 'yogi',
                 url : '#/yogi',
                 template : '<yogi></yogi>',
-                include : true
+                exclude : false
             },
             sandbox : {
                 display : 'sandbox',
                 state : 'sandbox',
                 url : '#/sandbox',
                 template : '<sandbox></sandbox>',
-                include : true
+                exclude : false
             },
             styleGuide : {
                 display : 'style guide',
                 state : 'styleGuide',
                 url : '#/style-guide',
                 template : '<style-guide></style-guide>',
-                include : true
+                exclude : false
             }
         };
 
@@ -57,8 +57,47 @@
             vm.titoPath = path;
         }
 
+        vm.configureKnownRoutes = function( stateProvider ) {
+            createRoute( stateProvider, vm.pages.home );
+
+            for ( var i = 0; i < vm.leftPages.length; i++ ) {
+                createRoute( stateProvider, vm.leftPages[i] );
+            }
+
+            createRoute( stateProvider, vm.pages.tito );
+            createRoute( stateProvider, vm.pages.yogi );
+            createRoute( stateProvider, vm.pages.sandbox );
+            createRoute( stateProvider, vm.pages.styleGuide );
+        }
+
         vm.$get = function() {
             return vm;
         };
     } );
+
+    function createRoute( stateProvider, page ) {
+        if ( !page.exclude && page.state && page.url && page.template ) {
+            stateProvider.state( page.state, {
+                url : createUiRouterUrl( page.url ),
+                template : page.template,
+                data : {
+                    pageTitle : page.display
+                }
+            } );
+        } else {
+            console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
+        }
+    }
+
+    function createUiRouterUrl( url ) {
+        if ( url.startsWith( '#' ) ) {
+            return url.substring( 1 );
+        }
+
+        if ( !url.startsWith( '/' ) ) {
+            return '/' + url;
+        }
+
+        return url;
+    }
 }() );

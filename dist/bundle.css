@@ -1,4 +1,3 @@
-
 /* Start the vertical centering */
 .cover-wrapper {
     height: 100%;
@@ -45,6 +44,7 @@
     text-align: center;
     text-rendering: optimizeLegibility;
 }
+
 .tito {
 	padding-top: 54px;
 }

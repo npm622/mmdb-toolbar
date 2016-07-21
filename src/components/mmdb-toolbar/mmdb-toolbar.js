@@ -15,7 +15,7 @@
         vm.homePage = provider.pages.home;
         vm.logo = provider.brandPath;
 
-        vm.leftPills = provider.leftPages;
+        vm.leftPages = provider.leftPages;
 
         vm.titoPage = provider.pages.tito;
         vm.yogiPage = provider.pages.yogi;

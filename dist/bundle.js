@@ -1,9 +1,9 @@
 (function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/home/home.html","<div class=\"container cover-wrapper\">\n    <div class=\"cover\">\n        <h1>welcome.</h1>\n        <p class=\"lead\">\n            this is the homepage. eventually, it will house a command center for everything you can do here. until then, <br /> just enjoy its simplicity.\n        </p>\n    </div>\n</div>");
+$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" ng-href=\"{{$ctrl.homePage.url}}\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" ng-src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("components/sandbox/sandbox.html","feel free to play around here");
 $templateCache.put("components/style-guide/style-guide.html","TODO: style guide");
 $templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.tito}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
-$templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");
-$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" ng-href=\"{{$ctrl.homePage.url}}\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" ng-src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");}]);})();
+$templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);})();
 ( function() {
     'use strict';
 
@@ -18,35 +18,35 @@ $templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav
                 state : 'home',
                 url : '#/',
                 template : '<home></home>',
-                include : true
+                exclude : false
             },
             tito : {
                 display : 'tito',
                 state : 'tito',
                 url : '#/tito',
                 template : '<tito></tito>',
-                include : true
+                exclude : false
             },
             yogi : {
                 display : 'yogi',
                 state : 'yogi',
                 url : '#/yogi',
                 template : '<yogi></yogi>',
-                include : true
+                exclude : false
             },
             sandbox : {
                 display : 'sandbox',
                 state : 'sandbox',
                 url : '#/sandbox',
                 template : '<sandbox></sandbox>',
-                include : true
+                exclude : false
             },
             styleGuide : {
                 display : 'style guide',
                 state : 'styleGuide',
                 url : '#/style-guide',
                 template : '<style-guide></style-guide>',
-                include : true
+                exclude : false
             }
         };
 
@@ -63,84 +63,37 @@ $templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav
             vm.titoPath = path;
         }
 
+        vm.configureKnownRoutes = function( stateProvider ) {
+            createRoute( stateProvider, vm.pages.home );
+
+            for ( var i = 0; i < vm.leftPages.length; i++ ) {
+                createRoute( stateProvider, vm.leftPages[i] );
+            }
+
+            createRoute( stateProvider, vm.pages.tito );
+            createRoute( stateProvider, vm.pages.yogi );
+            createRoute( stateProvider, vm.pages.sandbox );
+            createRoute( stateProvider, vm.pages.styleGuide );
+        }
+
         vm.$get = function() {
             return vm;
         };
     } );
-}() );
 
-( function() {
-    'use strict';
-
-    angular.module( 'mmdb.toolbar' )
-
-    .config( function config( $stateProvider, mmdbToolbarProvider ) {
-        for ( var i = 0; i < mmdbToolbarProvider.leftPages.length; i++ ) {
-            var page = mmdbToolbarProvider.leftPages[i];
-
-            if ( page.state && page.url && page.template ) {
-                $stateProvider.state( page.state, {
-                    url : page.url,
-                    template : page.template,
-                    data : {
-                        pageTitle : page.display
-                    }
-                } );
-            } else {
-                console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
-            }
-        }
-
-        if ( mmdbToolbarProvider.pages.home.include ) {
-            $stateProvider.state( mmdbToolbarProvider.pages.home.state, {
-                url : createUiRouterUrl( mmdbToolbarProvider.pages.home.url ),
-                template : mmdbToolbarProvider.pages.home.template,
+    function createRoute( stateProvider, page ) {
+        if ( !page.exclude && page.state && page.url && page.template ) {
+            stateProvider.state( page.state, {
+                url : createUiRouterUrl( page.url ),
+                template : page.template,
                 data : {
-                    pageTitle : mmdbToolbarProvider.pages.home.display
+                    pageTitle : page.display
                 }
             } );
+        } else {
+            console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
         }
-
-        if ( mmdbToolbarProvider.pages.tito.include ) {
-            $stateProvider.state( mmdbToolbarProvider.pages.tito.state, {
-                url : createUiRouterUrl( mmdbToolbarProvider.pages.tito.url ),
-                template : mmdbToolbarProvider.pages.tito.template,
-                data : {
-                    pageTitle : mmdbToolbarProvider.pages.tito.display
-                }
-            } );
-        }
-
-        if ( mmdbToolbarProvider.pages.yogi.include ) {
-            $stateProvider.state( mmdbToolbarProvider.pages.yogi.state, {
-                url : createUiRouterUrl( mmdbToolbarProvider.pages.yogi.url ),
-                template : mmdbToolbarProvider.pages.yogi.template,
-                data : {
-                    pageTitle : mmdbToolbarProvider.pages.yogi.display
-                }
-            } );
-        }
-
-        if ( mmdbToolbarProvider.pages.sandbox.include ) {
-            $stateProvider.state( mmdbToolbarProvider.pages.sandbox.state, {
-                url : createUiRouterUrl( mmdbToolbarProvider.pages.sandbox.url ),
-                template : mmdbToolbarProvider.pages.sandbox.template,
-                data : {
-                    pageTitle : mmdbToolbarProvider.pages.sandbox.display
-                }
-            } );
-        }
-
-        if ( mmdbToolbarProvider.pages.styleGuide.include ) {
-            $stateProvider.state( mmdbToolbarProvider.pages.styleGuide.state, {
-                url : createUiRouterUrl( mmdbToolbarProvider.pages.styleGuide.url ),
-                template : mmdbToolbarProvider.pages.styleGuide.template,
-                data : {
-                    pageTitle : mmdbToolbarProvider.pages.styleGuide.display
-                }
-            } );
-        }
-    } );
+    }
 
     function createUiRouterUrl( url ) {
         if ( url.startsWith( '#' ) ) {
@@ -226,6 +179,22 @@ $templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav
 } )();
 
 ( function() {
+    'use strict';
+
+    angular.module( 'mmdb.toolbar' )
+
+    .component( 'home', {
+        templateUrl : 'components/home/home.html',
+        bindings : {},
+        controller : [ HomeCtrl ]
+    } );
+
+    function HomeCtrl() {
+        var vm = this;
+    }
+} )();
+
+( function() {
     angular.module( 'mmdb.toolbar' )
 
     .component( 'mmdbToolbar', {
@@ -242,7 +211,7 @@ $templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav
         vm.homePage = provider.pages.home;
         vm.logo = provider.brandPath;
 
-        vm.leftPills = provider.leftPages;
+        vm.leftPages = provider.leftPages;
 
         vm.titoPage = provider.pages.tito;
         vm.yogiPage = provider.pages.yogi;
@@ -256,22 +225,6 @@ $templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav
                 return 'mmdb';
             }
         }
-    }
-} )();
-
-( function() {
-    'use strict';
-
-    angular.module( 'mmdb.toolbar' )
-
-    .component( 'home', {
-        templateUrl : 'components/home/home.html',
-        bindings : {},
-        controller : [ HomeCtrl ]
-    } );
-
-    function HomeCtrl() {
-        var vm = this;
     }
 } )();
 
