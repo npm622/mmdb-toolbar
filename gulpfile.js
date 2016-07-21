@@ -3,14 +3,14 @@ var _ = require( 'underscore' );
 var bower = require( 'gulp-bower' );
 var concat = require( 'gulp-concat' );
 var debug = require( 'gulp-debug' );
-var del = require ( 'del' );
+var del = require( 'del' );
 var gulp = require( 'gulp' );
 // var sass = require( 'gulp-sass' );
 // var sourcemaps = require( 'gulp-sourcemaps' );
 var templates = require( 'gulp-angular-templatecache' );
 
 var js = {
-    src : [ 'src/app.js', 'src/components/**/*.js', 'src/services/**/*.js', 'tmp/**/*.js' ],
+    src : [ 'src/app.js', 'src/routes.js', 'src/components/**/*.js', 'src/services/**/*.js', 'tmp/**/*.js' ],
     lib : []
 };
 
