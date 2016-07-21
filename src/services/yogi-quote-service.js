@@ -5,7 +5,7 @@
 
     .service( 'YogiQuoteService', [ 'mmdbToolbar', YogiQuoteService ] );
 
-    function YogiQuotes() {
+    function YogiQuoteService() {
         var vm = this;
 
         vm.random = function() {
