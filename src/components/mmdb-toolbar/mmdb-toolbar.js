@@ -12,6 +12,7 @@
     function MmdbToolbarCtrl( $location, provider ) {
         var vm = this;
 
+        vm.homePage = provider.pages.home;
         vm.logo = provider.brandPath;
 
         vm.leftPills = provider.leftPages;

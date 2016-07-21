@@ -1,7 +1,7 @@
 <nav class="nav navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header mmdb-brand center-image">
-            <a class="nav navbar-brand" href="#/"> <img alt="{{$ctrl.logoPlaceholder()}}" src="{{$ctrl.logo}}"></a>
+            <a class="nav navbar-brand" ng-href="{{$ctrl.homePage.url}}"> <img alt="{{$ctrl.logoPlaceholder()}}" ng-src="{{$ctrl.logo}}"></a>
         </div>
         <ul class="nav nav-tabs navbar-left">
             <li ng-repeat="page in $ctrl.leftPages"><a ng-href="{{page.url}}">{{page.display}}</a></li>

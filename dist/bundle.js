@@ -63,17 +63,18 @@
 }() );
 
 ( function() {
+    'use strict';
+
     angular.module( 'mmdb.toolbar' )
 
-    .component( 'sandbox', {
-        templateUrl : 'components/sandbox/sandbox.html',
+    .component( 'home', {
+        templateUrl : 'components/home/home.html',
         bindings : {},
-        controller : [ SandboxCtrl ]
+        controller : [ HomeCtrl ]
     } );
 
-    function SandboxCtrl() {
+    function HomeCtrl() {
         var vm = this;
-        console.log( "welcome to the sandbox controller" );
     }
 } )();
 
@@ -91,6 +92,7 @@
     function MmdbToolbarCtrl( $location, provider ) {
         var vm = this;
 
+        vm.homePage = provider.pages.home;
         vm.logo = provider.brandPath;
 
         vm.leftPills = provider.leftPages;
@@ -107,6 +109,36 @@
                 return 'mmdb';
             }
         }
+    }
+} )();
+
+( function() {
+    angular.module( 'mmdb.toolbar' )
+
+    .component( 'sandbox', {
+        templateUrl : 'components/sandbox/sandbox.html',
+        bindings : {},
+        controller : [ SandboxCtrl ]
+    } );
+
+    function SandboxCtrl() {
+        var vm = this;
+        console.log( "welcome to the sandbox controller" );
+    }
+} )();
+
+( function() {
+    angular.module( 'mmdb.toolbar' )
+
+    .component( 'styleGuide', {
+        templateUrl : 'components/style-guide/style-guide.html',
+        bindings : {},
+        controller : [ StyleGuideCtrl ]
+    } );
+
+    function StyleGuideCtrl() {
+        var vm = this;
+        console.log( "welcome to the style guide controller" );
     }
 } )();
 
@@ -139,37 +171,6 @@
         var vm = this;
 
         vm.quote = YogiQuoteService.random();
-    }
-} )();
-
-( function() {
-    'use strict';
-
-    angular.module( 'mmdb.toolbar' )
-
-    .component( 'home', {
-        templateUrl : 'components/home/home.html',
-        bindings : {},
-        controller : [ HomeCtrl ]
-    } );
-
-    function HomeCtrl() {
-        var vm = this;
-    }
-} )();
-
-( function() {
-    angular.module( 'mmdb.toolbar' )
-
-    .component( 'styleGuide', {
-        templateUrl : 'components/style-guide/style-guide.html',
-        bindings : {},
-        controller : [ StyleGuideCtrl ]
-    } );
-
-    function StyleGuideCtrl() {
-        var vm = this;
-        console.log( "welcome to the style guide controller" );
     }
 } )();
 
@@ -244,7 +245,7 @@
 } )();
 
 (function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/home/home.html","<div class=\"container cover-wrapper\">\n    <div class=\"cover\">\n        <h1>welcome.</h1>\n        <p class=\"lead\">\n            this is the homepage. eventually, it will house a command center for everything you can do here. until then, <br /> just enjoy its simplicity.\n        </p>\n    </div>\n</div>");
-$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" href=\"#/\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");
+$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" ng-href=\"{{$ctrl.homePage.url}}\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" ng-src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("components/sandbox/sandbox.html","feel free to play around here");
 $templateCache.put("components/style-guide/style-guide.html","TODO: style guide");
 $templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.tito}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
