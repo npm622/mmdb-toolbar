@@ -4,6 +4,22 @@
     angular.module( 'mmdb.toolbar' )
 
     .config( function config( $stateProvider, mmdbToolbarProvider ) {
+        for ( var i = 0; i < mmdbToolbarProvider.leftPages.length; i++ ) {
+            var page = mmdbToolbarProvider.leftPages[i];
+
+            if ( page.state && page.url && page.template ) {
+                $stateProvider.state( page.state, {
+                    url : page.url,
+                    template : page.template,
+                    data : {
+                        pageTitle : page.display
+                    }
+                } );
+            } else {
+                console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
+            }
+        }
+
         if ( mmdbToolbarProvider.pages.home.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.home.state, {
                 url : createUiRouterUrl( mmdbToolbarProvider.pages.home.url ),

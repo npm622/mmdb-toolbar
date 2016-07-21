@@ -48,6 +48,7 @@
             vm.brandPath = path;
         };
 
+        vm.leftPages = [];
         vm.setLeftPages = function( pages ) {
             vm.leftPages = pages;
         }
