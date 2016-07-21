@@ -10,7 +10,7 @@ var gulp = require( 'gulp' );
 var templates = require( 'gulp-angular-templatecache' );
 
 var js = {
-    src : [ 'src/app.js', 'src/routes.js', 'src/components/**/*.js', 'src/services/**/*.js', 'tmp/**/*.js' ],
+    src : [ 'tmp/templates.js', 'src/app.js', 'src/routes.js', 'src/components/**/*.js', 'src/services/**/*.js' ],
     lib : []
 };
 
