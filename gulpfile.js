@@ -3,22 +3,14 @@ var _ = require( 'underscore' );
 var bower = require( 'gulp-bower' );
 var concat = require( 'gulp-concat' );
 var debug = require( 'gulp-debug' );
+var del = require ( 'del' );
 var gulp = require( 'gulp' );
+// var sass = require( 'gulp-sass' );
 // var sourcemaps = require( 'gulp-sourcemaps' );
 var templates = require( 'gulp-angular-templatecache' );
 
-var templateCache = {
-    path : 'src',
-    filename : 'templates.js',
-    options : {
-        module : 'mmdb.toolbar.templates',
-        standalone : true,
-        moduleSystem : 'IIFE'
-    }
-};
-
 var js = {
-    src : [ 'src/app.js', 'src/components/**/*.js', 'src/services/**/*.js', templateCache.path + '/' + templateCache.filename ],
+    src : [ 'src/app.js', 'src/components/**/*.js', 'src/services/**/*.js', 'tmp/**/*.js' ],
     lib : []
 };
 
@@ -29,6 +21,16 @@ var html = {
 var styles = {
     src : [ 'src/**/*.css' ],
     lib : []
+};
+
+var templateCache = {
+    path : 'tmp',
+    filename : 'templates.js',
+    options : {
+        module : 'mmdb.toolbar.templates',
+        standalone : true,
+        moduleSystem : 'IIFE'
+    }
 };
 
 var dest = {
@@ -52,8 +54,8 @@ gulp.task( 'templates', [ 'bower' ], function() {
     } ) ).pipe( templates( templateCache.filename, templateCache.options ) ).pipe( gulp.dest( templateCache.path ) );
 } );
 
-gulp.task( 'js', [ 'templates' ], function() {
-    gulp.src( _.flatten( [ js.lib, js.src ] ) ).pipe( debug( {
+gulp.task( 'js-bundle', [ 'templates' ], function() {
+    return gulp.src( _.flatten( [ js.lib, js.src ] ) ).pipe( debug( {
         title : 'javascript:'
     } ) )
     // .pipe( sourcemaps.init() )
@@ -62,7 +64,11 @@ gulp.task( 'js', [ 'templates' ], function() {
     .pipe( gulp.dest( dest.js.path ) );
 } );
 
-gulp.task( 'css', [ 'js' ], function() {
+gulp.task( 'js', [ 'js-bundle' ], function() {
+    return del( templateCache.path );
+} );
+
+gulp.task( 'css', function() {
     gulp.src( _.flatten( [ styles.lib, styles.src ] ) ).pipe( debug( {
         title : 'styles:'
     } ) )
