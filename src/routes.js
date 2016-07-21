@@ -6,7 +6,7 @@
     .config( function config( $stateProvider, mmdbToolbarProvider ) {
         if ( mmdbToolbarProvider.pages.home.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.home.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.home.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.home.url ),
                 template : mmdbToolbarProvider.pages.home.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.home.display
@@ -16,7 +16,7 @@
 
         if ( mmdbToolbarProvider.pages.tito.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.tito.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.tito.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.tito.url ),
                 template : mmdbToolbarProvider.pages.tito.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.tito.display
@@ -26,7 +26,7 @@
 
         if ( mmdbToolbarProvider.pages.yogi.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.yogi.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.yogi.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.yogi.url ),
                 template : mmdbToolbarProvider.pages.yogi.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.yogi.display
@@ -36,7 +36,7 @@
 
         if ( mmdbToolbarProvider.pages.sandbox.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.sandbox.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.sandbox.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.sandbox.url ),
                 template : mmdbToolbarProvider.pages.sandbox.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.sandbox.display
@@ -46,7 +46,7 @@
 
         if ( mmdbToolbarProvider.pages.styleGuide.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.styleGuide.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.styleGuide.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.styleGuide.url ),
                 template : mmdbToolbarProvider.pages.styleGuide.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.styleGuide.display

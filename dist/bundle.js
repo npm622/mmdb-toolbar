@@ -76,7 +76,7 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
     .config( function config( $stateProvider, mmdbToolbarProvider ) {
         if ( mmdbToolbarProvider.pages.home.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.home.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.home.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.home.url ),
                 template : mmdbToolbarProvider.pages.home.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.home.display
@@ -86,7 +86,7 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 
         if ( mmdbToolbarProvider.pages.tito.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.tito.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.tito.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.tito.url ),
                 template : mmdbToolbarProvider.pages.tito.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.tito.display
@@ -96,7 +96,7 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 
         if ( mmdbToolbarProvider.pages.yogi.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.yogi.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.yogi.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.yogi.url ),
                 template : mmdbToolbarProvider.pages.yogi.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.yogi.display
@@ -106,7 +106,7 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 
         if ( mmdbToolbarProvider.pages.sandbox.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.sandbox.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.sandbox.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.sandbox.url ),
                 template : mmdbToolbarProvider.pages.sandbox.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.sandbox.display
@@ -116,7 +116,7 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 
         if ( mmdbToolbarProvider.pages.styleGuide.include ) {
             $stateProvider.state( mmdbToolbarProvider.pages.styleGuide.state, {
-                url : createUriRouterUrl( mmdbToolbarProvider.pages.styleGuide.url ),
+                url : createUiRouterUrl( mmdbToolbarProvider.pages.styleGuide.url ),
                 template : mmdbToolbarProvider.pages.styleGuide.template,
                 data : {
                     pageTitle : mmdbToolbarProvider.pages.styleGuide.display
@@ -209,22 +209,6 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 } )();
 
 ( function() {
-    'use strict';
-
-    angular.module( 'mmdb.toolbar' )
-
-    .component( 'home', {
-        templateUrl : 'components/home/home.html',
-        bindings : {},
-        controller : [ HomeCtrl ]
-    } );
-
-    function HomeCtrl() {
-        var vm = this;
-    }
-} )();
-
-( function() {
     angular.module( 'mmdb.toolbar' )
 
     .component( 'mmdbToolbar', {
@@ -259,17 +243,18 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
 } )();
 
 ( function() {
+    'use strict';
+
     angular.module( 'mmdb.toolbar' )
 
-    .component( 'styleGuide', {
-        templateUrl : 'components/style-guide/style-guide.html',
+    .component( 'home', {
+        templateUrl : 'components/home/home.html',
         bindings : {},
-        controller : [ StyleGuideCtrl ]
+        controller : [ HomeCtrl ]
     } );
 
-    function StyleGuideCtrl() {
+    function HomeCtrl() {
         var vm = this;
-        console.log( "welcome to the style guide controller" );
     }
 } )();
 
@@ -285,6 +270,21 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
     function SandboxCtrl() {
         var vm = this;
         console.log( "welcome to the sandbox controller" );
+    }
+} )();
+
+( function() {
+    angular.module( 'mmdb.toolbar' )
+
+    .component( 'styleGuide', {
+        templateUrl : 'components/style-guide/style-guide.html',
+        bindings : {},
+        controller : [ StyleGuideCtrl ]
+    } );
+
+    function StyleGuideCtrl() {
+        var vm = this;
+        console.log( "welcome to the style guide controller" );
     }
 } )();
 
