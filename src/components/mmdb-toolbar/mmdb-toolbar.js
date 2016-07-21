@@ -4,7 +4,7 @@
     .component( 'mmdbToolbar', {
         templateUrl : 'components/mmdb-toolbar/mmdb-toolbar.html',
         bindings : {
-            brandText : '@'
+            logoText : '@'
         },
         controller : [ '$location', 'mmdbToolbar', MmdbToolbarCtrl ]
     } );
@@ -12,24 +12,21 @@
     function MmdbToolbarCtrl( $location, provider ) {
         var vm = this;
 
-        vm.brandImg = provider.brandImg;
+        vm.logo = provider.brandPath;
 
-        vm.onTitoClick = function() {
-            $location.path( provider.titoUrl );
+        vm.leftPills = provider.leftPages;
+
+        vm.titoPage = provider.pages.tito;
+        vm.yogiPage = provider.pages.yogi;
+        vm.sandboxPage = provider.pages.sandbox;
+        vm.styleGuidePage = provider.pages.styleGuide;
+
+        vm.logoPlaceholder = function() {
+            if ( vm.logoText ) {
+                return vm.logoText;
+            } else {
+                return 'mmdb';
+            }
         }
-
-        vm.onYogiClick = function() {
-            $location.path( provider.yogiUrl );
-        }
-
-        vm.onSandboxClick = function() {
-            $location.path( provider.sandboxUrl );
-        }
-
-        vm.onStyleGuideClick = function() {
-            $location.path( provider.styleGuideUrl );
-        }
-
-        vm.leftPills = provider.leftPills;
     }
 } )();

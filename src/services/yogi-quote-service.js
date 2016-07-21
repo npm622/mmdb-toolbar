@@ -3,9 +3,9 @@
 
     angular.module( 'mmdb.toolbar' )
 
-    .service( 'yogiQuotes', [ 'mmdbToolbar', yogiQuotes ] );
+    .service( 'YogiQuoteService', [ 'mmdbToolbar', YogiQuoteService ] );
 
-    function yogiQuotes() {
+    function YogiQuotes() {
         var vm = this;
 
         vm.random = function() {

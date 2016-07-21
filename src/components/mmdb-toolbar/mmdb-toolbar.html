@@ -1,16 +1,16 @@
 <nav class="nav navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header mmdb-brand center-image">
-            <a class="nav navbar-brand" href="#/"> <img alt="{{$ctrl.brandText}}" src="{{$ctrl.brandImg}}"></a>
+            <a class="nav navbar-brand" href="#/"> <img alt="{{$ctrl.logoPlaceholder()}}" src="{{$ctrl.logo}}"></a>
         </div>
         <ul class="nav nav-tabs navbar-left">
-            <li ng-repeat="leftPill in $ctrl.leftPills"><a href="#/{{leftPill}}"></a></li>
+            <li ng-repeat="page in $ctrl.leftPages"><a ng-href="{{page.url}}">{{page.display}}</a></li>
         </ul>
         <ul class="nav nav-pills navbar-right">
-            <li><a ng-click="$ctrl.onTitoClick()">tito</a></li>
-            <li><a ng-click="$ctrl.onYogiClick()">yogi</a></li>
-            <li><a ng-click="$ctrl.onSandboxClick()">sandbox</a></li>
-            <li><a ng-click="$ctrl.onStyleGuideClick()">style guide</a></li>
+            <li ng-show="$ctrl.titoPage.include"><a ng-href="{{$ctrl.titoPage.url}}">{{$ctrl.titoPage.display}}</a></li>
+            <li ng-show="$ctrl.yogiPage.include"><a ng-href="{{$ctrl.yogiPage.url}}">{{$ctrl.yogiPage.display}}</a></li>
+            <li ng-show="$ctrl.sandboxPage.include"><a ng-href="{{$ctrl.sandboxPage.url}}">{{$ctrl.sandboxPage.display}}</a></li>
+            <li ng-show="$ctrl.styleGuidePage.include"><a ng-href="{{$ctrl.styleGuidePage.url}}">{{$ctrl.styleGuidePage.display}}</a></li>
         </ul>
     </div>
 </nav>

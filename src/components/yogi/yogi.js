@@ -4,12 +4,12 @@
     .component( 'yogi', {
         templateUrl : 'components/yogi/yogi.html',
         bindings : {},
-        controller : [ 'yogiQuotes', YogiCtrl ]
+        controller : [ 'YogiQuoteService', YogiCtrl ]
     } );
 
-    function YogiCtrl( yogiQuotes ) {
+    function YogiCtrl( YogiQuoteService ) {
         var vm = this;
 
-        vm.quote = yogiQuotes.random();
+        vm.quote = YogiQuoteService.random();
     }
 } )();

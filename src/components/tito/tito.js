@@ -10,6 +10,6 @@
     function TitoCtrl( provider ) {
         var vm = this;
 
-        vm.titoImg = provider.titoImg;
+        vm.tito = provider.titoPath;
     }
 } )();
