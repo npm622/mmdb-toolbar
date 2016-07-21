@@ -1,6 +1,6 @@
-(function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/home/home.html","<div class=\"container cover-wrapper\">\n    <div class=\"cover\">\n        <h1>welcome.</h1>\n        <p class=\"lead\">\n            this is the homepage. eventually, it will house a command center for everything you can do here. until then, <br /> just enjoy its simplicity.\n        </p>\n    </div>\n</div>");
+(function(){angular.module("mmdb.toolbar.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" ng-href=\"{{$ctrl.homePage.url}}\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" ng-src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");
+$templateCache.put("components/home/home.html","<div class=\"container cover-wrapper\">\n    <div class=\"cover\">\n        <h1>welcome.</h1>\n        <p class=\"lead\">\n            this is the homepage. eventually, it will house a command center for everything you can do here. until then, <br /> just enjoy its simplicity.\n        </p>\n    </div>\n</div>");
 $templateCache.put("components/sandbox/sandbox.html","feel free to play around here");
-$templateCache.put("components/mmdb-toolbar/mmdb-toolbar.html","<nav class=\"nav navbar-default navbar-fixed-top\">\n    <div class=\"container-fluid\">\n        <div class=\"navbar-header mmdb-brand center-image\">\n            <a class=\"nav navbar-brand\" ng-href=\"{{$ctrl.homePage.url}}\"> <img alt=\"{{$ctrl.logoPlaceholder()}}\" ng-src=\"{{$ctrl.logo}}\"></a>\n        </div>\n        <ul class=\"nav nav-tabs navbar-left\">\n            <li ng-repeat=\"page in $ctrl.leftPages\"><a ng-href=\"{{page.url}}\">{{page.display}}</a></li>\n        </ul>\n        <ul class=\"nav nav-pills navbar-right\">\n            <li ng-show=\"$ctrl.titoPage.include\"><a ng-href=\"{{$ctrl.titoPage.url}}\">{{$ctrl.titoPage.display}}</a></li>\n            <li ng-show=\"$ctrl.yogiPage.include\"><a ng-href=\"{{$ctrl.yogiPage.url}}\">{{$ctrl.yogiPage.display}}</a></li>\n            <li ng-show=\"$ctrl.sandboxPage.include\"><a ng-href=\"{{$ctrl.sandboxPage.url}}\">{{$ctrl.sandboxPage.display}}</a></li>\n            <li ng-show=\"$ctrl.styleGuidePage.include\"><a ng-href=\"{{$ctrl.styleGuidePage.url}}\">{{$ctrl.styleGuidePage.display}}</a></li>\n        </ul>\n    </div>\n</nav>");
 $templateCache.put("components/style-guide/style-guide.html","TODO: style guide");
 $templateCache.put("components/tito/tito.html","<div>\n    <h1 class=\"banner-title\">Meet Tito!</h1>\n    <img alt=\"Tito, sunmool! ... Tito! ... TITO BAP!!!\" ng-src=\"{{$ctrl.tito}}\" class=\"center-block img-circle tito\"/>\n</div>\n");
 $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title\">Yogi says...</h1>\n	<blockquote class=\"quote-box\">\n		<p class=\"quote-text\">{{$ctrl.quote.line}}</p>\n	</blockquote>\n</div>\n");}]);})();
@@ -16,35 +16,35 @@ $templateCache.put("components/yogi/yogi.html","<div>\n	<h1 class=\"banner-title
             home : {
                 display : 'mmdb',
                 state : 'home',
-                url : '/',
+                url : '#/',
                 template : '<home></home>',
                 include : true
             },
             tito : {
                 display : 'tito',
                 state : 'tito',
-                url : '/tito',
+                url : '#/tito',
                 template : '<tito></tito>',
                 include : true
             },
             yogi : {
                 display : 'yogi',
                 state : 'yogi',
-                url : '/yogi',
+                url : '#/yogi',
                 template : '<yogi></yogi>',
                 include : true
             },
             sandbox : {
                 display : 'sandbox',
                 state : 'sandbox',
-                url : '/sandbox',
+                url : '#/sandbox',
                 template : '<sandbox></sandbox>',
                 include : true
             },
             styleGuide : {
                 display : 'style guide',
                 state : 'styleGuide',
-                url : '/style-guide',
+                url : '#/style-guide',
                 template : '<style-guide></style-guide>',
                 include : true
             }
