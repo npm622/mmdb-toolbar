@@ -7,10 +7,10 @@
             <li ng-repeat="page in $ctrl.leftPages"><a ng-href="{{page.url}}">{{page.display}}</a></li>
         </ul>
         <ul class="nav nav-pills navbar-right">
-            <li ng-show="$ctrl.titoPage.include"><a ng-href="{{$ctrl.titoPage.url}}">{{$ctrl.titoPage.display}}</a></li>
-            <li ng-show="$ctrl.yogiPage.include"><a ng-href="{{$ctrl.yogiPage.url}}">{{$ctrl.yogiPage.display}}</a></li>
-            <li ng-show="$ctrl.sandboxPage.include"><a ng-href="{{$ctrl.sandboxPage.url}}">{{$ctrl.sandboxPage.display}}</a></li>
-            <li ng-show="$ctrl.styleGuidePage.include"><a ng-href="{{$ctrl.styleGuidePage.url}}">{{$ctrl.styleGuidePage.display}}</a></li>
+            <li ng-hide="$ctrl.titoPage.exclude"><a ng-href="{{$ctrl.titoPage.url}}">{{$ctrl.titoPage.display}}</a></li>
+            <li ng-hide="$ctrl.yogiPage.exclude"><a ng-href="{{$ctrl.yogiPage.url}}">{{$ctrl.yogiPage.display}}</a></li>
+            <li ng-hide="$ctrl.sandboxPage.exclude"><a ng-href="{{$ctrl.sandboxPage.url}}">{{$ctrl.sandboxPage.display}}</a></li>
+            <li ng-hide="$ctrl.styleGuidePage.exclude"><a ng-href="{{$ctrl.styleGuidePage.url}}">{{$ctrl.styleGuidePage.display}}</a></li>
         </ul>
     </div>
 </nav>
