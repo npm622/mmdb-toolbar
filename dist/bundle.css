@@ -13,8 +13,16 @@
     padding: 10px 20px;
     font-weight: bold;
 }
-.nav, .pagination, .carousel, .panel-title a {
-    cursor: pointer;
+
+body {
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+@media ( max-width : 992px) {
+    body {
+        padding-top: 0px;
+    }
 }
 
 .mmdb-brand {
@@ -44,10 +52,6 @@
     text-align: center;
     text-rendering: optimizeLegibility;
 }
-
-.tito {
-	padding-top: 54px;
-}
 .quote-box {
     margin: 72px auto;
     padding: 32px 16px;
@@ -63,4 +67,7 @@
     letter-spacing: .15em;
     font-family: CenturyGothic;
     text-align: center;
+}
+.tito {
+	padding-top: 54px;
 }

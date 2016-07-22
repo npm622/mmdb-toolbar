@@ -1,5 +1,12 @@
-.nav, .pagination, .carousel, .panel-title a {
-    cursor: pointer;
+body {
+    padding-top: 50px;
+    overflow: hidden;
+}
+
+@media ( max-width : 992px) {
+    body {
+        padding-top: 0px;
+    }
 }
 
 .mmdb-brand {

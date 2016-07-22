@@ -1,7 +1,7 @@
 ( function() {
     'use strict';
 
-    angular.module( 'mmdb.toolbar', [ 'mmdb.toolbar.templates', 'ui.router' ] )
+    angular.module( 'mmdb.toolbar', [ 'mmdb.toolbar.templates' ] )
 
     .provider( 'mmdbToolbar', function() {
         var vm = this;
@@ -85,7 +85,9 @@
                 }
             } );
         } else {
-            console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
+            if ( !page.exclude ) {
+                console.log( 'WARN: cannot configure page without state, url, and template; ' + angular.toJson( page ) );
+            }
         }
     }
 
