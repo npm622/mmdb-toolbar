@@ -1,3 +1,18 @@
+/* Start the vertical centering */
+.cover-wrapper {
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.cover {
+    padding: 30px 20px;
+}
+
+.cover {
+    padding: 10px 20px;
+    font-weight: bold;
+}
 .mmdb-brand {
     width: 220px;
     overflow: hidden;
@@ -24,21 +39,6 @@
     padding: 36px 0px;
     text-align: center;
     text-rendering: optimizeLegibility;
-}
-/* Start the vertical centering */
-.cover-wrapper {
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.cover {
-    padding: 30px 20px;
-}
-
-.cover {
-    padding: 10px 20px;
-    font-weight: bold;
 }
 
 .tito {
