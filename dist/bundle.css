@@ -1,14 +1,18 @@
-body {
-    padding-top: 50px;
-    overflow: hidden;
+/* Start the vertical centering */
+.cover-wrapper {
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
 }
 
-@media ( max-width : 992px) {
-    body {
-        padding-top: 0px;
-    }
+.cover {
+    padding: 30px 20px;
 }
 
+.cover {
+    padding: 10px 20px;
+    font-weight: bold;
+}
 .mmdb-brand {
     width: 220px;
     overflow: hidden;
@@ -36,22 +40,6 @@ body {
     text-align: center;
     text-rendering: optimizeLegibility;
 }
-/* Start the vertical centering */
-.cover-wrapper {
-    height: 100%;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.cover {
-    padding: 30px 20px;
-}
-
-.cover {
-    padding: 10px 20px;
-    font-weight: bold;
-}
-
 .tito {
 	padding-top: 54px;
 }
