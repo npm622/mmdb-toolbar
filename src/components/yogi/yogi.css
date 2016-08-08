@@ -1,0 +1,16 @@
+.quote-box {
+    margin: 72px auto;
+    padding: 32px 16px;
+    position: center;
+    width: 50%;
+    border-radius: 16px;
+    border-left: 4px solid;
+    border-right: 4px solid;
+}
+
+.quote-text {
+    font-size: 2em;
+    letter-spacing: .15em;
+    font-family: CenturyGothic;
+    text-align: center;
+}
